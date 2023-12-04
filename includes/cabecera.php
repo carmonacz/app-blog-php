@@ -7,7 +7,7 @@
 
     <!-- Estilos -->
     <link rel="stylesheet" href="./assets/css/styles.css" />
-    <title>Blog de Videojuegos gamer</title>
+    <title>Blog de Videojuegos</title>
 </head>
 <body>
     <!-- Cabecera -->
