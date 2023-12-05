@@ -1,16 +1,23 @@
 <?php
-session_start();
 
 if(isset($_POST)){
+    require_once 'includes/conexion.php';
+
+    if(!isset($_SESSION)){
+        session_start();
+    }
+
     if(isset($_POST['name'])){
-        $nombre = $_POST['name'];
+
+     $nombre =  mysqli_real_escape_string($db, $_POST['name']);           
+        
     }else{
         $nombre = false;
     }
 
-    $apellidos = isset($_POST['surname']) ? $_POST['surname'] : false;
-    $email = isset($_POST['email']) ? $_POST['email'] : false;
-    $password = isset($_POST['password']) ? $_POST['password'] : false;
+    $apellidos = isset($_POST['surname']) ? mysqli_real_escape_string($db, $_POST['surname']) : false;
+    $email = isset($_POST['email']) ? mysqli_real_escape_string($db, $_POST['email']) : false;
+    $password = isset($_POST['password']) ? mysqli_real_escape_string($db, $_POST['password']) : false;
 
     //Array de errores
     $errores = array();
@@ -48,10 +55,22 @@ if(isset($_POST)){
  
     if(count($errores) == 0){
         $guardar_usuario = true;
+
+        //cifrar la contraseña
+        $password_segura = password_hash($password, PASSWORD_BCRYPT, ['cost'=>4]);
+        
         //INSERTAR USUARIO EN L BASE DE DATOS
+        $sql = "INSERT INTO usuarios VALUES(null, '$nombre', '$apellidos', '$email', '$password_segura', CURDATE());";
+        $guardar = mysqli_query($db, $sql);
+
+        if($guardar){
+            $_SESSION['completado'] = 'El registro se ha completado con éxito';
+        }else{
+            $_SESSION['errores']['general'] ="Fallo al guardar el usuario!!";
+        }
 
     }else{
         $_SESSION['errores'] = $errores;
-        header('Location: index.php');
     }
 }
+header('Location: index.php');

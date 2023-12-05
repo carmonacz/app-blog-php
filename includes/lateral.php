@@ -21,6 +21,13 @@
     
     <div id="register" class="block-aside">        
         <h3>Registrate</h3>
+
+        <!-- Mostrar errores -->
+        <?php if(isset($_SESSION['completado'])): ?>
+        <div class="alerta alerta-exito"><?= $_SESSION['completado'];?></div> 
+        <?php elseif(isset($_SESSION['errores']['general'])): ?>
+        <div class="alerta alerta-error"><?= $_SESSION['errores']['general'];?></div>     
+        <?php endif; ?>
         <form action="registro.php" method="POST" >
             <P>
                 <label for="name">Nombre</label>

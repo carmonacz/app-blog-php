@@ -1,9 +1,9 @@
 <?php
 // Conexion
-$server = 'localhost';
-$username = 'administrador';
-$password = 'administrador';
-$database = 'blog_master';
+$server = 'netcarmona.es';
+$username = 'w284570_jose';
+$password = '=G&H05}5ow^N';
+$database = 'w284570_blog_master';
 
 $db = mysqli_connect($server, $username, $password, $database);
 
