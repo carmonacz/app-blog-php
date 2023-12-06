@@ -7,45 +7,31 @@
 <!-- CAJA PRINCIPAL -->
 <div class="principal">
     <h1>Ultimas entradas</h1>
-    <article class="todo">
-        <a href="#">
-            <h2>Titulo de mi entrada</h2>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum quidem quod tempora soluta saepe sequi, nam numquam ut non doloribus voluptates tempore aut quae harum, molestias animi nobis, perferendis sit.</p>
-        </a>
-    </article>
+
+    <?php
+        $entradas = conseguirUltimasEntradas($db);
+        if(!empty($entradas)):
+            while($entrada = mysqli_fetch_assoc($entradas)):
+    ?>
 
     <article class="todo">
         <a href="#">
-            <h2>Titulo de mi entrada</h2>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum quidem quod tempora soluta saepe sequi, nam numquam ut non doloribus voluptates tempore aut quae harum, molestias animi nobis, perferendis sit.</p>
+            <h2><?=$entrada['titulo'];?></h2>
+            <span class="fecha"><?=$entrada['categoria']. ' | '. $entrada['fecha_registro'];?></span>
+            <p><?=substr($entrada['descripcion'], 0, 200)."..."; ?></p>
         </a>
     </article>
 
-    <article class="todo">
-        <a href="#">
-            <h2>Titulo de mi entrada</h2>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum quidem quod tempora soluta saepe sequi, nam numquam ut non doloribus voluptates tempore aut quae harum, molestias animi nobis, perferendis sit.</p>
-        </a>
-    </article>
-
-    <article class="todo">
-        <a href="#">
-            <h2>Titulo de mi entrada</h2>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum quidem quod tempora soluta saepe sequi, nam numquam ut non doloribus voluptates tempore aut quae harum, molestias animi nobis, perferendis sit.</p>
-        </a>
-    </article>
-
-    <article class="todo">
-        <a href="#">
-            <h2>Titulo de mi entrada</h2>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Earum quidem quod tempora soluta saepe sequi, nam numquam ut non doloribus voluptates tempore aut quae harum, molestias animi nobis, perferendis sit.</p>
-        </a>
-    </article>
+    <?php
+            endwhile;
+        endif;
+    ?>
+    
 
     <div class="ver-todas">
         <a href="#">Ver todas las entradas</a>
     </div>
-</div>
+</div> <!-- Fin PRINCIPAL -->
         
 <?php require_once './includes/pie.php' ; ?>
     
