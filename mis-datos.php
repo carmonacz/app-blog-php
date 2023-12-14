@@ -15,19 +15,19 @@
     <form action="actualizar-usuario.php" method="POST" >
         <P>
             <label for="name">Nombre</label>
-            <input type="text" name="name" />
+            <input type="text" name="name" value="<?= $_SESSION['usuario']['nombre']; ?>" />
             <?php echo isset($_SESSION['errores']) ? mostrarError($_SESSION['errores'], 'nombre') : ''; ?>
         </P>
 
         <P>
             <label for="surname">Apellidos</label>
-            <input type="text" name="surname" />
+            <input type="text" name="surname" value="<?= $_SESSION['usuario']['apellidos']; ?>" />
             <?php echo isset($_SESSION['errores']) ? mostrarError($_SESSION['errores'], 'surname') : ''; ?>
         </P>
 
         <P>
             <label for="email">Email</label>
-            <input type="email" name="email" />
+            <input type="email" name="email" value="<?= $_SESSION['usuario']['email']; ?>"/>
             <?php echo isset($_SESSION['errores']) ? mostrarError($_SESSION['errores'], 'email') : ''; ?>
         </P>
 
