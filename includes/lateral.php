@@ -1,5 +1,17 @@
 <!-- BARRA LATERAL -->
 <aside id="sidebar">
+
+    <div id="buscador" class="block-aside">
+        <h3>Buscar</h3>
+   
+        <form action="buscar.php" method="POST" >
+            <P>
+                <input type="text" name="busqueda" />
+            </P>
+            <button>Buscar</button>
+        </form>
+    </div>
+
     <?php if(isset($_SESSION['usuario'])): ?>
         <div class="block-aside">
             <h3>Bienvenido, <?=$_SESSION['usuario']['nombre'].' '. $_SESSION['usuario']['apellidos'];  ?></h3>
@@ -14,6 +26,7 @@
     <?php 
         if(!isset($_SESSION['usuario'])):
     ?>
+
     <div id="login" class="block-aside">
         <h3>Indentificate</h3>
         <?php if(isset($_SESSION['error_login'])): ?>
@@ -34,7 +47,6 @@
             <button>Entrar</button>
         </form>
     </div>
-    
     
     <div id="register" class="block-aside">        
         <h3>Registrate</h3>
