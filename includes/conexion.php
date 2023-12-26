@@ -1,9 +1,9 @@
 <?php
 // Conexion
-$server = 'netcarmona.es';
-$username = 'w284570_jose';
-$password = '=G&H05}5ow^N';
-$database = 'w284570_blog_master';
+$server = 'TUHOSTING';
+$username = 'TUUSUARIO';
+$password = 'TUPASSWORD';
+$database = 'TUBASEDATOS';
 
 $db = mysqli_connect($server, $username, $password, $database);
 
